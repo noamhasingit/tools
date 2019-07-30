@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # rarfile.py
 #
 # Copyright (c) 2005-2016  Marko Kreen <markokr@gmail.com>

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from os import walk, path, getenv, remove
 from shutil import move
 from fnmatch import fnmatch
@@ -14,7 +15,7 @@ def cmd_variables():
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--log', nargs='*', help='Parse only logs', default=["/home",
-                                                                                   getenv('USERPROFILE') + "\\"])
+                                                                                   getenv('USERPROFILE') + "/"])
     parser.add_argument('-skipl', '--skip_logs', help='Skip logs', action='store_true'
                         , dest='skip_logs', default=False)
     parser.add_argument('-uz', '--unzip', help='Unzip files before searching', action='store_true'
@@ -24,7 +25,7 @@ def cmd_variables():
     parser.add_argument('-sn', '--scan_number', nargs='?', help='Unzip X times',
                         type=int, default=1)
     parser.add_argument('-all', '--findall', nargs='*', help='Search in all files',
-                        default=["/home", getenv('USERPROFILE') + "\\"])
+                        default=["/home", getenv('USERPROFILE') + "/"])
 
     args = parser.parse_args()
     return args
@@ -148,8 +149,8 @@ def unzip_files(files, removefile=False, new_name=''):
                 print(str(e))
 
         if new_name != '':
-            s_file = file[:file.rfind("\\") + 1]
-            e_file = file[file.rfind("\\") + 1:]
+            s_file = file[:file.rfind("/") + 1]
+            e_file = file[file.rfind("/") + 1:]
             move(file, s_file + new_name[0] + e_file)
             print ("Backup zip: ", s_file + new_name[0] + e_file)
 

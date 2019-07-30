@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import re
 import random
 
@@ -157,18 +159,18 @@ def print_result(logs, err, res):
     global results_prefix
     print ("Found ", len(res), " lines for ", err, " pattern.")
     for name in logs:
-        print (name + "\\" + results_prefix[0] + err)
+        print (name + "/" + results_prefix[0] + err)
         try:
-            with open(name + "\\" + results_prefix[0] + err + '.txt', "w+") as file:
+            with open(name + "/" + results_prefix[0] + err + '.txt', "w+") as file:
                 for ent in res.values():
                     try:
                         file.write("[" + ent[0] + "," + str(ent[1]) + "] - " + ent[2] + "\n")
                     except (TypeError, ValueError) as e:
                         print("Error in line: ", "[" + ent[0] + "," + str(ent[1]) + "]", " for - ", ent[2] )
         except (IOError, OSError):
-            print ("New Name: ", name + "\\" + results_prefix[0] +  random.randint(0, 10000) + '.txt')
-            with open(name + "\\" + results_prefix[0] +  random.randint(0, 10000) + '.txt', "w+") as file:
-                print("Saving file in: ", name + "\\" + results_prefix[0], random.randint(0, 10000))
+            print ("New Name: ", name + "/" + results_prefix[0] +  random.randint(0, 10000) + '.txt')
+            with open(name + "/" + results_prefix[0] +  random.randint(0, 10000) + '.txt', "w+") as file:
+                print("Saving file in: ", name + "/" + results_prefix[0], random.randint(0, 10000))
                 for ent in res.values():
                     try:
                         file.write("[" + ent[0] + "," + str(ent[1]) + "] - " + ent[2] + "\n")
