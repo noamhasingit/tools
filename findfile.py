@@ -41,7 +41,7 @@ def find(pattern, my_path, ignore_list=[]):
             if len(ignore_list) > 0:
                 for ignore_pattern in ignore_list:
                     if fnmatch(name, ignore_pattern + "*"):
-                        #print("Found actimize file , skipping ", name)
+                        #print("Found Transmit file , skipping ", name)
                         skip_to_next = True
                         break
             else:

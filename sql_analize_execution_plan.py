@@ -16,7 +16,7 @@ except NameError:
 exact_match = ['ERROR', 'FAILED', 'EXCEPTION', 'CAUSED BY']
 max_lines_per_file_cons = 65000
 is_debug = False
-results_prefix = ["actimize_support_parser_"]
+results_prefix = ["Transmit_support_parser_"]
 
 def print_debug(action, message = ''):
 

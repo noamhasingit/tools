@@ -76,8 +76,8 @@ def main():
         else:
             print(dl_path + ticket_name, " already exists")
     time.sleep(3)
-    copy(dl_path + "actimize_support_extract_and_search_err.bat",
-         dl_path + ticket_name + "\\" + "actimize_extract_and_search_err_all.bat")
+    copy(dl_path + "Transmit_support_extract_and_search_err.bat",
+         dl_path + ticket_name + "\\" + "Transmit_extract_and_search_err_all.bat")
     print(dl_path + ticket_name)
 
     files = os.listdir(dl_path + dl_currentlogs)
@@ -88,9 +88,9 @@ def main():
     if args.search:
         for search in args.search:
             print("Search for : ", search)
-            with open(dl_path + ticket_name + "\\" + "actimize_extract_and_search_err_" + search + ".bat", "a") as file:
+            with open(dl_path + ticket_name + "\\" + "Transmit_extract_and_search_err_" + search + ".bat", "a") as file:
                     try:
-                        file.write(r"python C:\Users\noamha\PycharmProjects\actimize_verification_tool\checkOS"
+                        file.write(r"python C:\Users\noamha\PycharmProjects\Transmit_verification_tool\checkOS"
                                    r"\checkOS\errorsearch.py -m " + search)
                     except (IOError, OSError) as e:
                         print("Error writing line.")

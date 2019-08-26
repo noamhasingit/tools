@@ -1,9 +1,9 @@
 import configparser
 config_good = configparser.RawConfigParser()
-config_good.read(r'C:\Actimize\ais_server\Add-Ons\Name Analytics\Configuration\culture_Organizations.config')
+config_good.read(r'C:\Transmit\ais_server\Add-Ons\Name Analytics\Configuration\culture_Organizations.config')
 
 config_bad = configparser.RawConfigParser()
-config_bad.read(r'C:\Actimize417\ais_server\Add-Ons\Name Analytics\Configuration\culture_Organizations.config')
+config_bad.read(r'C:\Transmit417\ais_server\Add-Ons\Name Analytics\Configuration\culture_Organizations.config')
 
 
 

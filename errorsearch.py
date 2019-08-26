@@ -18,7 +18,7 @@ except NameError:
 exact_match = ['ERROR', 'FAILED', 'EXCEPTION', 'CAUSED BY']
 max_lines_per_file_cons = 65000
 is_debug = False
-results_prefix = ["actimize_support_parser_"]
+results_prefix = ["Transmit_support_parser_"]
 
 def print_debug(action, message = ''):
 
@@ -118,12 +118,11 @@ def parse_files(files, regex, parse_each_line=True, count_per_file=max_lines_per
                 with open(name, "r", encoding="utf8") as file_name:
                     for line in file_name:
                         line_cnt = line_cnt + 1
-#                        print (line_cnt, line)
+#                       print (line_cnt, line)
                         if line_cnt == 476:
                             match = p.match(line)
                             print (name,regex,match)
-#                             exit ()
-
+#                           exit ()
                         match = p.match(line)
                         if match:
                             match_text = match.group()
@@ -134,23 +133,22 @@ def parse_files(files, regex, parse_each_line=True, count_per_file=max_lines_per
                                 break
                 file_name.close()
             except (TypeError, ValueError):
-                print_debug("INFO: Using ASCII")
-            try:
-                with open(name, "r") as file_name:
-                    for line in file_name:
-                        line_cnt = line_cnt + 1
-                        match = p.match(line)
-                        if match:
-                            match_text = match.group()
-                            pattern_cnt = pattern_cnt + 1
-                            pattern_per_file = pattern_per_file + 1
-                            current_dict[pattern_cnt] = (name, line_cnt, match_text)
-                            if pattern_per_file >= count_per_file:
-                                break
-                file_name.close()
-            except (TypeError, ValueError):
-                print_debug(name + " --> Not ASCII or UTF8 - is also a superclass of io.UnsupportedOperation")
-                print ("Error: Fail to read file:  ", name)
+                try:
+                    with open(name, "r") as file_name:
+                        for line in file_name:
+                            line_cnt = line_cnt + 1
+                            match = p.match(line)
+                            if match:
+                                match_text = match.group()
+                                pattern_cnt = pattern_cnt + 1
+                                pattern_per_file = pattern_per_file + 1
+                                current_dict[pattern_cnt] = (name, line_cnt, match_text)
+                                if pattern_per_file >= count_per_file:
+                                    break
+                    file_name.close()
+                except (TypeError, ValueError):
+                    print_debug(name + " --> Not ASCII or UTF8 - is also a superclass of io.UnsupportedOperation")
+                    print ("Error: Fail to read file:  ", name)
     return current_dict
 
 
@@ -169,7 +167,7 @@ def print_result(logs, err, res):
                         print("Error in line: ", "[" + ent[0] + "," + str(ent[1]) + "]", " for - ", ent[2] )
         except (IOError, OSError):
             print ("New Name: ", name + "/" + results_prefix[0] +  random.randint(0, 10000) + '.txt')
-            with open(name + "/" + results_prefix[0] +  random.randint(0, 10000) + '.txt', "w+") as file:
+            with open(name + "/" + results_prefix[0] + random.randint(0, 10000) + '.txt', "w+") as file:
                 print("Saving file in: ", name + "/" + results_prefix[0], random.randint(0, 10000))
                 for ent in res.values():
                     try:
@@ -187,7 +185,6 @@ def run():
     if args.unzip:
 
         zipped_files = findfile.find_files_by_type(args.path, findfile.get_zip_types(), results_prefix)
-        #print("Found :", len(zipped_files), " ", findfile.get_zip_types(), " files")
         findfile.unzip_files(zipped_files, False, results_prefix)
 
     if args.match:
